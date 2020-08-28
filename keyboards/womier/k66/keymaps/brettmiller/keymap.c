@@ -15,9 +15,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MO(2)          , KC_LALT , KC_LGUI ,                     LT(1,KC_SPC) ,                  KC_RGUI , KC_RALT , KC_RCTL , KC_LEFT , KC_DOWN , KC_RGHT
     ),
   [1] = LAYOUT(
-    KC_GRV         , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5    , KC_F6    , KC_F7   , KC_F8   , KC_F9   , KC_F10  , KC_F11  , KC_F12  , KC_MUTE , KC_VOLU ,
-    _______        , _______ , _______ , _______ , _______ , _______  , _______  , _______ , KC_PSCR , KC_SLCK , KC_PGUP , _______ , _______ , _______ , KC_VOLD ,
-    _______        , _______ , _______ , _______ , _______ , _______  , KC_LEFT  , KC_DOWN , KC_UP   , KC_RIGHT, KC_PGDN , KC_BSPC , KC_DEL  ,
+    KC_GRV         , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5    , KC_F6    , KC_F7   , KC_F8   , KC_F9   , KC_F10  , _______ , _______ , KC_MUTE , KC_VOLU ,
+    _______        , _______ , _______ , _______ , _______ , _______  , _______  , _______ , KC_PSCR , KC_SLCK , KC_PGUP , KC_DEL  , _______ , _______ , KC_VOLD ,
+    _______        , _______ , _______ , _______ , _______ , _______  , KC_LEFT  , KC_DOWN , KC_UP   , KC_RIGHT, KC_PGDN , KC_BSPC , _______ ,
     _______        , _______ , _______ , _______ , _______ , _______  , _______  , _______ , _______ , _______ , _______ , _______ , KC_PGUP ,
     MO(2)          , _______ , _______ ,                     _______  ,                      _______ , MO(2)   , MO(1)   , KC_HOME , KC_PGDN , KC_END
     ),
