@@ -90,10 +90,18 @@ void rgb_matrix_indicators_user(void) {
     uint8_t layer = biton32(layer_state);
     switch (layer) {
       case _L1:
-        set_leds_color(_L1);
+        //set_leds_color(_L1);
+        rgb_matrix_set_color(28, 0, 0, 255);
+        rgb_matrix_set_color(34, 0, 0, 255);
+        rgb_matrix_set_color(35, 0, 0, 255);
+        rgb_matrix_set_color(36, 0, 0, 255);
+        rgb_matrix_set_color(37, 0, 0, 255);
         break;
       case _CRGB:
-        set_leds_color(_CRGB);
+        //set_leds_color(_CRGB);
+        rgb_matrix_set_color(0, 0, 255, 0);
+        rgb_matrix_set_color(1, 0, 255, 0);
+        rgb_matrix_set_color(2, 0, 255, 0);
         break;
     }
   }
