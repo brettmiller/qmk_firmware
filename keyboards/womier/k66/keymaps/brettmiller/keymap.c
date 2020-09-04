@@ -1,5 +1,8 @@
 #include QMK_KEYBOARD_H
 
+// variable for rgb_matrix config
+extern rgb_config_t rgb_matrix_config;
+
 /*
  *
  * brettmiller's Womier K66 layout - lovingly handcrafted
@@ -34,3 +37,64 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
+// Layers RGB map
+const uint8_t PROGMEM ledcolors[][DRIVER_LED_TOTAL][4] = {
+  [_L1] ={
+    {34, HSV_GREEN},  // Light LEDs starting with LED 34 GREEN - hjkl
+    {35, HSV_GREEN},  // Light LEDs starting with LED 34 GREEN - hjkl
+    {36, HSV_GREEN},  // Light LEDs starting with LED 34 GREEN - hjkl
+    {37, HSV_GREEN},  // Light LEDs starting with LED 34 GREEN - hjkl
+    {24, HSV_RED},    // Light LED 38 RED - p
+    {38, HSV_RED}     // Light LED 38 RED - ;
+ },
+  [_CRGB] = {
+    {0, HSV_GREEN},   // Light LEDs 0-12 -  ~ to Backspace
+    {1, HSV_GREEN},   // Light LEDs 0-12 -  ~ to Backspace
+    {2, HSV_GREEN},   // Light LEDs 0-12 -  ~ to Backspace
+    {3, HSV_GREEN},   // Light LEDs 0-12 -  ~ to Backspace
+    {4, HSV_GREEN},   // Light LEDs 0-12 -  ~ to Backspace
+    {5, HSV_GREEN},   // Light LEDs 0-12 -  ~ to Backspace
+    {6, HSV_GREEN},   // Light LEDs 0-12 -  ~ to Backspace
+    {7, HSV_GREEN},   // Light LEDs 0-12 -  ~ to Backspace
+    {8, HSV_GREEN},   // Light LEDs 0-12 -  ~ to Backspace
+    {9, HSV_GREEN},   // Light LEDs 0-12 -  ~ to Backspace
+    {10, HSV_GREEN},  // Light LEDs 0-12 -  ~ to Backspace
+    {11, HSV_GREEN},  // Light LEDs 0-12 -  ~ to Backspace
+    {12, HSV_GREEN}   // Light LEDs 0-12 -  ~ to Backspace
+  }
+};
+
+void matrix_init_user(void) {
+  rgb_matrix_config.raw = eeprom_read_dword(EECONFIG_RGB_MATRIX);
+}
+
+// Function to set individual LED colors
+void set_leds_color( int layer) {
+  for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
+    uint8_t val = pgm_read_byte(&ledcolors[layer][i][2]);
+    // if the brightness of the led is set to 0 in the map,
+    // the value is not overriden with global controls, allowing the led
+    // to appear turned off
+    HSV hsv = { .h = pgm_read_byte(&ledcolors[layer][i][1]), .s = pgm_read_byte(&ledcolors[layer][i][2]), .v = val == 0 ? 0 : rgb_matrix_config.hsv.v};
+    int led = pgm_read_byte(&ledcolors[layer][1][0]);
+    RGB rgb = hsv_to_rgb(hsv);
+    rgb_matrix_set_color( led, rgb.r, rgb.g, rgb.b );
+  }
+};
+
+void rgb_matrix_indicators_user(void) {
+  uint32_t mode = rgblight_get_mode();
+  // assign colors if the matrix is on and the current mode
+  // is SOLID COLORS => No animations running
+  if(rgb_matrix_config.enable == 1 && mode == 1) {
+    uint8_t layer = biton32(layer_state);
+    switch (layer) {
+      case _L1:
+        set_leds_color(_L1);
+        break;
+      case _CRGB:
+        set_leds_color(_CRGB);
+        break;
+    }
+  }
+};

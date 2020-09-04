@@ -2,3 +2,6 @@
 
 #define RGBLIGHT_LAYERS
 #define RGB_DISABLE_WHEN_USB_SUSPENDED true
+
+// Disable RGB animations
+#undef RGBLIGHT_ANIMATIONS
