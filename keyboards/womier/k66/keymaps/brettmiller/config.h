@@ -1,6 +1,6 @@
 #define RGBLIGHT_SLEEP
 
-#define RGBLIGHT_LAYERS
+//#define RGBLIGHT_LAYERS // Not for rgb matrix???
 #define RGB_DISABLE_WHEN_USB_SUSPENDED true
 
 #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 200 // limits maximum brightness of LEDs to 200 out of 255. If not defined maximum brightness is set to 255
