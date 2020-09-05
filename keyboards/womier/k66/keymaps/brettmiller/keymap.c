@@ -38,6 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 // Layers RGB map
+/*
 const uint8_t PROGMEM ledcolors[][DRIVER_LED_TOTAL][4] = {
   [_L1] ={
     {34, HSV_GREEN},  // Light LEDs starting with LED 34 GREEN - hjkl
@@ -63,6 +64,7 @@ const uint8_t PROGMEM ledcolors[][DRIVER_LED_TOTAL][4] = {
     {12, HSV_GREEN}   // Light LEDs 0-12 -  ~ to Backspace
   }
 };
+*/
 
 void matrix_init_user(void) {
   rgb_matrix_config.raw = eeprom_read_dword(EECONFIG_RGB_MATRIX);
@@ -91,17 +93,17 @@ void rgb_matrix_indicators_user(void) {
     switch (layer) {
       case _L1:
         //set_leds_color(_L1);
-        rgb_matrix_set_color(28, 0, 0, 255);
-        rgb_matrix_set_color(34, 0, 0, 255);
-        rgb_matrix_set_color(35, 0, 0, 255);
-        rgb_matrix_set_color(36, 0, 0, 255);
-        rgb_matrix_set_color(37, 0, 0, 255);
+        //rgb_matrix_set_color(8, 0, 0, 255);
+        rgb_matrix_set_color(13, 0, 0, 255);
+        //rgb_matrix_set_color(5, 0, 0, 255);
+        //rgb_matrix_set_color(6, 0, 0, 255);
+        //rgb_matrix_set_color(7, 0, 0, 255);
         break;
       case _CRGB:
         //set_leds_color(_CRGB);
         rgb_matrix_set_color(0, 0, 255, 0);
-        rgb_matrix_set_color(1, 0, 255, 0);
-        rgb_matrix_set_color(2, 0, 255, 0);
+        //rgb_matrix_set_color(1, 0, 255, 0);
+        //rgb_matrix_set_color(2, 0, 255, 0);
         break;
     }
   }
