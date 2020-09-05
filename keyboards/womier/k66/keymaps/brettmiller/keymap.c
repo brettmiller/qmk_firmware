@@ -26,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______        , _______ , _______ , _______ , _______ , _______  , _______  , _______ , KC_PSCR , KC_SLCK , KC_DEL  , KC_PGUP , _______ , _______ , KC_VOLD ,
     _______        , _______ , _______ , KC_DEL  , _______ , _______  , KC_LEFT  , KC_DOWN , KC_UP   , KC_RIGHT, KC_BSPC , KC_PGDN , _______ ,
     _______        , _______ , _______ , _______ , _______ , _______  , _______  , _______ , _______ , _______ , _______ , _______ , KC_PGUP ,
-    MO(_CRGB)      , _______ , _______ ,                     _______  ,                      _______ , MO(_CRGB), MO(_L1), KC_HOME , KC_PGDN , KC_END
+    MO(_CRGB)      , _______ , _______ ,                     _______  ,                      _______ , MO(_CRGB),_______ , KC_HOME , KC_PGDN , KC_END
     ),
   [_CRGB] = LAYOUT(
     RGB_MOD       , RGB_RMOD , RGB_M_P , RGB_M_B , RGB_M_R , RGB_M_SW , RGB_M_SN , RGB_M_K , RGB_M_X , RGB_M_G , RGB_M_T , KC_F11  , KC_F12  , RGB_TOG , RGB_VAI ,
@@ -38,7 +38,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 // Layers RGB map
-/*
 const uint8_t PROGMEM ledcolors[][DRIVER_LED_TOTAL][4] = {
   [_L1] ={
     {34, HSV_GREEN},  // Light LEDs starting with LED 34 GREEN - hjkl
@@ -64,7 +63,6 @@ const uint8_t PROGMEM ledcolors[][DRIVER_LED_TOTAL][4] = {
     {12, HSV_GREEN}   // Light LEDs 0-12 -  ~ to Backspace
   }
 };
-*/
 
 void matrix_init_user(void) {
   rgb_matrix_config.raw = eeprom_read_dword(EECONFIG_RGB_MATRIX);
@@ -88,16 +86,16 @@ void rgb_matrix_indicators_user(void) {
   uint32_t mode = rgblight_get_mode();
   // assign colors if the matrix is on and the current mode
   // is SOLID COLORS => No animations running
-  if(rgb_matrix_config.enable == 1 && mode == 1) {
+  if(rgb_matrix_config.enable == 1) { // && mode == 1) {
     uint8_t layer = biton32(layer_state);
     switch (layer) {
       case _L1:
         //set_leds_color(_L1);
-        //rgb_matrix_set_color(8, 0, 0, 255);
-        rgb_matrix_set_color(13, 0, 0, 255);
-        //rgb_matrix_set_color(5, 0, 0, 255);
-        //rgb_matrix_set_color(6, 0, 0, 255);
-        //rgb_matrix_set_color(7, 0, 0, 255);
+        //rgb_matrix_set_color(0, 0, 0, 255);
+        rgb_matrix_set_color(14, 0, 0, 255);
+        //rgb_matrix_set_color(35, 0, 0, 255);
+        //rgb_matrix_set_color(36, 0, 0, 255);
+        //rgb_matrix_set_colo(37, 0, 0, 255);
         break;
       case _CRGB:
         //set_leds_color(_CRGB);
