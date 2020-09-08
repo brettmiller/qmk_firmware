@@ -37,6 +37,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
+void matrix_init_user(void) {
+  rgb_matrix_config.raw = eeprom_read_dword(EECONFIG_RGB_MATRIX);
+}
+
+/* commented for now and just setting RGB directly in case statement
 // Layers RGB map
 const uint8_t PROGMEM ledcolors[][DRIVER_LED_TOTAL][4] = {
   [_L1] ={
@@ -64,10 +69,6 @@ const uint8_t PROGMEM ledcolors[][DRIVER_LED_TOTAL][4] = {
   }
 };
 
-void matrix_init_user(void) {
-  rgb_matrix_config.raw = eeprom_read_dword(EECONFIG_RGB_MATRIX);
-}
-
 // Function to set individual LED colors
 void set_leds_color( int layer) {
   for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
@@ -81,9 +82,11 @@ void set_leds_color( int layer) {
     rgb_matrix_set_color( led, rgb.r, rgb.g, rgb.b );
   }
 };
+*/
 
 void rgb_matrix_indicators_user(void) {
-  uint32_t mode = rgblight_get_mode();
+  // mode check is off since I don't care about only in static/"plain" mode
+  // uint32_t mode = rgblight_get_mode();
   // assign colors if the matrix is on and the current mode
   // is SOLID COLORS => No animations running
   if(rgb_matrix_config.enable == 1) { // && mode == 1) {
@@ -92,7 +95,7 @@ void rgb_matrix_indicators_user(void) {
       case _L1:
         //set_leds_color(_L1);
         //rgb_matrix_set_color(0, 0, 0, 255);
-        rgb_matrix_set_color(0, 0, 0, 125);
+        rgb_matrix_set_color(0, 0, 0, 127);
         //rgb_matrix_set_color(35, 0, 0, 255);
         //rgb_matrix_set_color(36, 0, 0, 255);
         //rgb_matrix_set_colo(37, 0, 0, 255);
