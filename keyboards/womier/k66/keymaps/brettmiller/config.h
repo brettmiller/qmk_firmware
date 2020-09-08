@@ -5,7 +5,7 @@
 
 #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 200 // limits maximum brightness of LEDs to 200 out of 255. If not defined maximum brightness is set to 255
 #define RGB_MATRIX_STARTUP_MODE 1   // Sets the default mode, if none has been set
-#define RGB_MATRIX_STARTUP_HUE  309 // Sets the default hue value, if none has been set
+#define RGB_MATRIX_STARTUP_HUE  330 // Sets the default hue value, if none has been set
 #define RGB_MATRIX_STARTUP_SAT  255 // Sets the default saturation value, if none has been set
 #define RGB_MATRIX_STARTUP_VAL  63  // Sets the default brightness value, if none has been se
 
