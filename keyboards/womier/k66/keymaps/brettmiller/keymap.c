@@ -95,7 +95,7 @@ void rgb_matrix_indicators_user(void) {
       case _L1:
         //set_leds_color(_L1);
         //rgb_matrix_set_color(0, 0, 0, 255);
-        rgb_matrix_set_color(0, 0, 0, 127);
+        rgb_matrix_set_color(0, 0, 0, 125);
         //rgb_matrix_set_color(35, 0, 0, 255);
         //rgb_matrix_set_color(36, 0, 0, 255);
         //rgb_matrix_set_colo(37, 0, 0, 255);
